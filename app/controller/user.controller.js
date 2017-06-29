@@ -1,6 +1,6 @@
-const User = require('../models/user/user.model');
+const User = require('../models/user.model');
 
-function insert(req, res){
+function insertUser(req, res){
     const user = new User({
         userName: req.body.userName,
         password: req.body.password
@@ -11,8 +11,13 @@ function insert(req, res){
         .catch(e => next(e));
 }
 
-function list(req, res){
-    res.send('get Val');
+function findUser(req, res){
+    User.find().exec().then(users => {
+        res.json(users);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
 }
 
-module.exports = {insert, list}
+module.exports = {insertUser, findUser}

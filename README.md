@@ -1,9 +1,9 @@
 # digital_pulz
-This is an angular based application for pharmacies.That meets the general requirements of pharmacies in sri lanka.
+Services for digital_pulz application
 
 # Run
 ```
 npm install
 npm start
 ```
-Runs an express server on port 3000 (http://localhost:8000/)
+Runs an express server on port 8000 (http://localhost:8000/)
