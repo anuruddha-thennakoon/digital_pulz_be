@@ -1,18 +1,32 @@
 'use strict';
 
 const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const config = require('./app/config/config');
+
+const route = require('./app/routes/api');
+
+//set up the express app
 const app = express();
 
-app.use(express.static(__dirname));
+//plugin bluebird promise in mongoose
+mongoose.Promise = global.Promise;
 
-app.get('/', (req, res, next) => {
-    res.sendFile(__dirname + '/app/views/index.html');
+// connect to mongo db
+const mongoUri = config.mongo.host;
+
+mongoose.connect(mongoUri, { server: { socketOptions: { keepAlive: 1 } } });
+mongoose.connection.on('error', () => {
+    throw new Error(`unable to connect to database: ${mongoUri}`);
 });
 
-app.listen(3000, err => {
-    if (err) {
-        console.error(err);
-        return;
-    }
-    console.log('app listening on port 3000');
+app.use(bodyParser.json());
+
+//intialize route
+app.use('/api',route);
+
+//listen for request
+app.listen( process.env.port || config.port, function () {
+    console.log('Now listning for request');
 });
