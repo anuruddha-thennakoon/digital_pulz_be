@@ -1,7 +1,16 @@
-/*function findUser(req, res) {
+var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var express = require('express');
+var app = express();
+var config = require('../config/config'); // get our config file
+
+app.set('superSecret', config.secret); // secret variable
+
+const User = require('../models/user.model');
+
+function login(req, res) {
     // find the user
     User.findOne({
-        name: req.body.name
+        userName: req.body.userName
     }, function (err, user) {
 
         if (err) throw err;
@@ -33,4 +42,4 @@
     });
 }
 
-module.exports = { findUser }*/
+module.exports = { login }
