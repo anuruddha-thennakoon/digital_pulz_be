@@ -9,6 +9,9 @@ const newUser = new Schema ({
     },
     password: {
         type: String
+    },
+    userRole :{
+        type :String
     }
 });
 

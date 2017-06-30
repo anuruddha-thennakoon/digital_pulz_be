@@ -3,7 +3,8 @@ const User = require('../models/user.model');
 function insertUser(req, res){
     const user = new User({
         userName: req.body.userName,
-        password: req.body.password
+        password: req.body.password,
+        userRole : req.body.userRole
     });
 
     user.save()

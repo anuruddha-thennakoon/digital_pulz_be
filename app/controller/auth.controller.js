@@ -32,7 +32,8 @@ function login(req, res) {
 
                 res.json({
                     success: true,
-                    message: 'Enjoy your token!',
+                    userName: user.userName,
+                    userRole: user.userRole,
                     token: token
                 });
             }
@@ -40,6 +41,8 @@ function login(req, res) {
         }
 
     });
+
+    
 }
 
 module.exports = { login }
