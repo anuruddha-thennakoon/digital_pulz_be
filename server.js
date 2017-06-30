@@ -8,7 +8,6 @@ const route = require('./app/routes/api');
 
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
-
 //set up the express app
 const app = express();
 
