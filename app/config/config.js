@@ -3,7 +3,7 @@ const config = {
     secret:'digital_pulz',
     port: 8000,
     mongo: {
-        host: 'mongodb://localhost/digital_pulz',
+        host: 'mongodb://localhost/d',
         port: 27017
     }
 };

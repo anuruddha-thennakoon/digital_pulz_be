@@ -1,28 +1,22 @@
 const Stock = require('../models/stock.model');
 
 
-function insertStock(req, res) {
+function insertStock(req, res){
     const stock = new Stock({
         drugName: req.body.drugName,
         unitType: req.body.unitType,
-        drugCategory: req.body.drugCategory,
-        drugPrice: req.body.drugPrice,
-        quantity: req.body.quantity
+        drugCategory : req.body.drugCategory,
+        drugPrice:req.body.drugPrice,
+        quantity:req.body.quantity
     });
-    item.save()
-        .then(ItemDb => {
-            return PrescriptionModel.findByIdAndUpdate(presId, {
-                $push: { "items": ItemDb._id }
-            })
-        })
-        .then(() => {
-            return PrescriptionModel.findById(presId).populate('items').exec();
-        })
-        .then(savedItem => res.json(savedItem))
+
+    stock.save()
+        .then(savedStock => res.json(savedStock))
         .catch(e => next(e));
 }
+
     function findStock(req, res) {
-        Item.find().exec().then(stock => {
+        Stock.find().exec().then(stock => {
             res.json(stock);
         }).catch(err => {
             console.error(err);
@@ -30,4 +24,14 @@ function insertStock(req, res) {
         });
     }
 
-    module.exports = { insertStock, findStock }
+
+     function findDanger(req, res) {
+        Stock.find({'quantity':{ $lt: 10 }}).exec().then(stock => {
+            res.json(stock);
+        }).catch(err => {
+            console.error(err);
+            res.sendStatus(500);
+        });
+    }
+
+    module.exports = { insertStock, findStock, findDanger }
