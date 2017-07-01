@@ -7,20 +7,23 @@ function insertItem(req, res) {
         drugName: req.body.drugName,
         quantity: req.body.quantity,
         dose: req.body.dose,
-        period: req.body.period
+        period: req.body.period,
+        frequency: req.body.frequency
     });
     item.save()
-        .then(ItemDb => {
-            return PrescriptionModel.findByIdAndUpdate(presId, {
-                $push: { "items": ItemDb._id }
-            })
-        })
-        .then(() => {
-            return PrescriptionModel.findById(presId).populate('items').exec();
-        })
+        // .then(ItemDb => {
+        //     return PrescriptionModel.findByIdAndUpdate(presId, {
+        //         $push: { "items": ItemDb._id }
+        //     })
+        // })
+        // .then(() => {
+        //     return PrescriptionModel.findById(presId).populate('items').exec();
+        // })
         .then(savedItem => res.json(savedItem))
         .catch(e => next(e));
 }
+
+//find item
 function findItem(req, res) {
     Item.find().exec().then(item => {
         res.json(item);
@@ -30,6 +33,15 @@ function findItem(req, res) {
     });
 }
 
+//remove item
+function removeItem(req, res) {
+    Item.remove(req.params.id).then(() => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+}
 
-module.exports = { insertItem, findItem }
+module.exports = { insertItem, findItem, removeItem}
 

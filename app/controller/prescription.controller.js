@@ -1,18 +1,18 @@
 const Prescription = require('../models/prescription.model');
 const Item = require('../models/item.model');
 
-function insertPrescription(req, res){
+function insertPrescription(req, res) {
     const prescription = new Prescription({
         patientName: req.body.patientName,
         prescribedDate: req.body.prescribedDate,
-        status: "not"
+        status: false
     });
     prescription.save()
         .then(savedPrescription => res.json(savedPrescription))
         .catch(e => next(e));
 }
 
-function findPrescription(req, res){
+function findPrescription(req, res) {
     Prescription.find().populate('item').exec().then(prescriptions => {
         res.json(prescriptions);
     }).catch(err => {
@@ -22,9 +22,9 @@ function findPrescription(req, res){
 }
 
 //prescriptions issued today
-function findTodayPrescription(req, res){
+function findTodayPrescription(req, res) {
     Prescription.find({
-        prescribedDate:{'$gte': '2017-07-01T08:24:59.365Z'}
+        prescribedDate: { '$gte': '2017-07-01T08:24:59.365Z' }
     }).populate('item').exec().then(prescriptions => {
         res.json(prescriptions);
     }).catch(err => {
@@ -34,9 +34,9 @@ function findTodayPrescription(req, res){
 }
 
 //find previous prescriptions
-function findPreviousPrescription(req, res){
+function findPreviousPrescription(req, res) {
     Prescription.find({
-        prescribedDate:{'$lt': '2017-07-02T08:24:59.365Z'}
+        prescribedDate: { '$lt': '2017-07-02T08:24:59.365Z' }
     }).populate('item').exec().then(prescriptions => {
         res.json(prescriptions);
     }).catch(err => {
@@ -46,11 +46,9 @@ function findPreviousPrescription(req, res){
 }
 
 //find pending prescriptions (to be dispensed)
-function findPendingPrescription(req, res){
-    Prescription.find({
-        status: "false"
-    }).populate('item').exec().then(prescriptions => {
-        res.json(prescriptions);
+function findPendingPrescription(req, res) {
+    Prescription.find({ status: 'false' }).exec().then(prescriptions => {
+        res.json(prescriptions || {});
     }).catch(err => {
         console.error(err);
         res.sendStatus(500);
@@ -58,5 +56,4 @@ function findPendingPrescription(req, res){
 }
 
 
-
-module.exports = {insertPrescription, findPrescription,findTodayPrescription,findPreviousPrescription,findPendingPrescription}
+module.exports = { insertPrescription, findPrescription, findTodayPrescription, findPreviousPrescription, findPendingPrescription }
