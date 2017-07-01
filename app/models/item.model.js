@@ -18,6 +18,9 @@ const newItem = new Schema({
     },
     period: {
         type: String
+    },
+    frequency: {
+        type: String
     }
 });
 
