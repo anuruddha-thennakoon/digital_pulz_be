@@ -23,13 +23,7 @@ function findSupplier(req, res) {
 }
 
 function updateSupplier(req, res) {
-    const supplier = new Supplier({
-        companyName: req.body.companyName,
-        description: req.body.description,
-        address: req.body.address,
-        contactPerson: req.body.contactPerson,
-        contactNumber: req.body.contactNumber
-    });
+    const supplier = new Supplier(req.body);
     supplier.update().then(() => {
         res.sendStatus(200);
     }).catch(err => {
