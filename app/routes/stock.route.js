@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.route('/')
-    .post(stock.insertStock)
+   
 
 	.get(stock.findStock)
 

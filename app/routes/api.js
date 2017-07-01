@@ -7,6 +7,7 @@ const presRoute = require('./prescription.route');
 const itemRoute = require('./item.route');
 const stockRoute = require('./stock.route');
 const supplierRoute = require('./supplier.route');
+const orderRoute=require('./order.route');
 
 //your routers
 router.use('/authenticate', authRoute);
@@ -16,6 +17,7 @@ router.use('/item', itemRoute);
 router.use('/drugs', itemRoute);
 router.use('/stock',stockRoute);
 router.use('/supplier', supplierRoute);
+router.use('/order',orderRoute);
 
 module.exports = router;
 
