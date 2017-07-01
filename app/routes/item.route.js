@@ -8,7 +8,9 @@ router.route('/')
 
 	.get(item.findItem);
 
-
+router.route('/{:id}')
+    .delete(item.removeItem);
+    
 module.exports = router;
 
 

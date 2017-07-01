@@ -4,10 +4,16 @@ const Stock = require('../models/stock.model');
 function insertStock(req, res){
     const stock = new Stock({
         drugName: req.body.drugName,
-        unitType: req.body.unitType,
+        drugType: req.body.drugType,
         drugCategory : req.body.drugCategory,
         drugPrice:req.body.drugPrice,
-        quantity:req.body.quantity
+        quantity:req.body.quantity,
+        remarks:req.body.remarks,
+        dangerLevel:req.body.dangerLevel,
+        reorderLevel:req.body.reorderLevel,
+        dosage:req.body.dosage,
+        frequency:req.body.frequency
+
     });
 
     stock.save()
