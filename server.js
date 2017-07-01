@@ -24,43 +24,43 @@ mongoose.connection.on('error', () => {
 
 app.use(bodyParser.json());
 
-app.use(function (req, res, next) {
+// app.use(function (req, res, next) {
 
-    console.log(req.url);
-    if (req.url == '/api/authenticate') {
-        next();
-    } else {
-        // check header or url parameters or post parameters for token
-        var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+//     console.log(req.url);
+//     if (req.url == '/api/authenticate') {
+//         next();
+//     } else {
+//         // check header or url parameters or post parameters for token
+//         var token = req.body.token || req.param('token') || req.headers['x-access-token'];
 
-        // decode token
-        if (token) {
+//         // decode token
+//         if (token) {
 
-            // verifies secret and checks exp
-            jwt.verify(token, app.get('superSecret'), function (decoded, err) {
-                console.log('Decoder ->' + req.decoded);
-                if (err) {
-                    return res.json({ success: false, message: 'Failed to authenticate token.' });
-                } else {
-                    // if everything is good, save to request for use in other routes
-                    req.decoded = decoded;
-                    console.log(req.decoded);
-                    next();
-                }
-            });
+//             // verifies secret and checks exp
+//             jwt.verify(token, app.get('superSecret'), function (decoded, err) {
+//                 console.log('Decoder ->' + req.decoded);
+//                 if (err) {
+//                     return res.json({ success: false, message: 'Failed to authenticate token.' });
+//                 } else {
+//                     // if everything is good, save to request for use in other routes
+//                     req.decoded = decoded;
+//                     console.log(req.decoded);
+//                     next();
+//                 }
+//             });
 
-        } else {
+//         } else {
 
-            // if there is no token
-            // return an error
-            return res.status(403).send({
-                success: false,
-                message: 'No token provided.'
-            });
+//             // if there is no token
+//             // return an error
+//             return res.status(403).send({
+//                 success: false,
+//                 message: 'No token provided.'
+//             });
 
-        }
-    }
-});
+//         }
+//     }
+// });
 
 //intialize route
 app.use('/api', route);

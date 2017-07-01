@@ -8,6 +8,12 @@ router.route('/')
 
 	.get(prescription.findPrescription);
 
+router.route('/today')
+
+    .get(prescription.findTodayPrescription);
+
+router.route('/lowstock')
+
 module.exports = router;
 
 
