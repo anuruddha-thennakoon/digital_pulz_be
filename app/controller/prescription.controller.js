@@ -24,7 +24,19 @@ function findPrescription(req, res){
 //prescriptions issued today
 function findTodayPrescription(req, res){
     Prescription.find({
-        prescribedDate:{'$gte':new Date('2017-07-01T00:00:00.000Z')}
+        prescribedDate:{'$gte': '2017-07-01T08:24:59.365Z'}
+    }).populate('item').exec().then(prescriptions => {
+        res.json(prescriptions);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+}
+
+//find previous prescriptions
+function findPreviousPrescription(req, res){
+    Prescription.find({
+        prescribedDate:{'$lt': '2017-07-02T08:24:59.365Z'}
     }).populate('item').exec().then(prescriptions => {
         res.json(prescriptions);
     }).catch(err => {
@@ -35,4 +47,7 @@ function findTodayPrescription(req, res){
 
 
 
-module.exports = {insertPrescription, findPrescription,findTodayPrescription}
+
+
+
+module.exports = {insertPrescription, findPrescription,findTodayPrescription,findPreviousPrescription}

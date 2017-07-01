@@ -12,7 +12,11 @@ router.route('/today')
 
     .get(prescription.findTodayPrescription);
 
-router.route('/lowstock')
+
+router.route('/previous')
+
+    .get(prescription.findPreviousPrescription);
+    
 
 module.exports = router;
 

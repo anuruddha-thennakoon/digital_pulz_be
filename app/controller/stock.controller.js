@@ -34,4 +34,14 @@ function insertStock(req, res){
         });
     }
 
+        function findAvailability(req, res) {
+        Stock.find({'drugName':"pp" }).exec().then(stock => {
+            res.json(stock);    
+        }).catch(err => {
+            console.error(err);
+            res.sendStatus(500);
+        });
+    }
+
+
     module.exports = { insertStock, findStock, findDanger }

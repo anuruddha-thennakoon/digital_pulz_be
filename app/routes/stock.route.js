@@ -11,5 +11,8 @@ router.route('/')
 router.route('/danger')
     .get(stock.findDanger);
 
+
+    
+
 module.exports = router;
 
