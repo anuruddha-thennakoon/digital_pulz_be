@@ -8,6 +8,7 @@ router.route('/')
 
 	.get(stock.findStock)
 
+router.route('/danger')
     .get(stock.findDanger);
 
 module.exports = router;
