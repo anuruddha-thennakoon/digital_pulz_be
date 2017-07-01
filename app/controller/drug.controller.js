@@ -1,17 +1,18 @@
-const Drug = require('../models/drug.model');
+const Drug = require('../models/stock.model');
 
 function insertDrug(req, res) {
     const drug = new Drug({
-
-        drugCategory: req.body.drugCategory,
         drugName: req.body.drugName,
         drugType: req.body.drugType,
+        drugCategory: req.body.drugCategory,
+        quantity: req.body.quantity,
         remarks: req.body.remarks,
-        price: req.body.price,
+        drugPrice: req.body.price,
         dangerLevel: req.body.dangerLevel,
         reorderLevel: req.body.reorderLevel,
         dosage: req.body.dosage,
-        frequency: req.body.frequency
+        frequency: req.body.frequency,
+        
     });
 
     drug.save()
@@ -28,4 +29,4 @@ function findDrugs(req, res) {
     });
 }
 
-module.exports = { insertUser, findUser }
+module.exports = { insertDrug, findDrugs }
