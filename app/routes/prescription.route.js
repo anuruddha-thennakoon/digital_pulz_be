@@ -8,6 +8,20 @@ router.route('/')
 
 	.get(prescription.findPrescription);
 
+router.route('/today')
+
+    .get(prescription.findTodayPrescription);
+
+
+router.route('/previous')
+
+    .get(prescription.findPreviousPrescription);
+    
+router.route('/pending')
+
+    .get(prescription.findPendingPrescription);
+    
+
 module.exports = router;
 
 

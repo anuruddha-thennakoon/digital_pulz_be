@@ -7,7 +7,7 @@ const newPrescription = new Schema({
         type: String
     },
     prescribedDate: {
-        type: Date
+        type: { type: Date, default: Date.now }
     },
     status: {
         type: String
