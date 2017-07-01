@@ -59,8 +59,4 @@ function findPendingPrescription(req, res){
 
 
 
-
-
-
-
 module.exports = {insertPrescription, findPrescription,findTodayPrescription,findPreviousPrescription,findPendingPrescription}
