@@ -7,17 +7,18 @@ function insertItem(req, res) {
         drugName: req.body.drugName,
         quantity: req.body.quantity,
         dose: req.body.dose,
-        period: req.body.period
+        period: req.body.period,
+        frequency: req.body.frequency
     });
     item.save()
-        .then(ItemDb => {
-            return PrescriptionModel.findByIdAndUpdate(presId, {
-                $push: { "items": ItemDb._id }
-            })
-        })
-        .then(() => {
-            return PrescriptionModel.findById(presId).populate('items').exec();
-        })
+        // .then(ItemDb => {
+        //     return PrescriptionModel.findByIdAndUpdate(presId, {
+        //         $push: { "items": ItemDb._id }
+        //     })
+        // })
+        // .then(() => {
+        //     return PrescriptionModel.findById(presId).populate('items').exec();
+        // })
         .then(savedItem => res.json(savedItem))
         .catch(e => next(e));
 }

@@ -7,5 +7,10 @@ router.route('/')
     .post(supplier.insertSupplier)
 
     .get(supplier.findSupplier);
-	
+
+router.route('/:id')
+    .put(supplier.updateSupplier)
+
+    .delete(supplier.deleteSupplier);
+
 module.exports = router;

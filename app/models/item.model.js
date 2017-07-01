@@ -14,9 +14,12 @@ const newItem = new Schema({
         type: Number
     },
     dose: {
-        type: String
+        type: Number
     },
     period: {
+        type: String
+    },
+    frequency: {
         type: String
     }
 });
