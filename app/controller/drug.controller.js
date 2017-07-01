@@ -1,10 +1,17 @@
 const Drug = require('../models/drug.model');
 
-function insertDrug(req, res){
+function insertDrug(req, res) {
     const drug = new Drug({
-        userName: req.body.userName,
-        password: req.body.password,
-        userRole : req.body.userRole
+
+        drugCategory: req.body.drugCategory,
+        drugName: req.body.drugName,
+        drugType: req.body.drugType,
+        remarks: req.body.remarks,
+        price: req.body.price,
+        dangerLevel: req.body.dangerLevel,
+        reorderLevel: req.body.reorderLevel,
+        dosage: req.body.dosage,
+        frequency: req.body.frequency
     });
 
     drug.save()
@@ -12,7 +19,7 @@ function insertDrug(req, res){
         .catch(e => next(e));
 }
 
-function findDrugs(req, res){
+function findDrugs(req, res) {
     Drug.find().exec().then(drugs => {
         res.json(drugs);
     }).catch(err => {
@@ -21,4 +28,4 @@ function findDrugs(req, res){
     });
 }
 
-module.exports = {insertUser, findUser}
+module.exports = { insertUser, findUser }
