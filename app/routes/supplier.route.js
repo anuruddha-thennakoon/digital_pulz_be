@@ -8,7 +8,7 @@ router.route('/')
 
     .get(supplier.findSupplier);
 
-router.route('/:id')
+router.route('/:id/')
     .put(supplier.updateSupplier)
 
     .delete(supplier.deleteSupplier);

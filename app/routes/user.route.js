@@ -7,11 +7,6 @@ router.route('/')
     .post(user.insertUser)
 
     .get(user.findUser);
-
-router.route('/{:id}')
-    .post(user.insertUser)
-
-    .get(user.findUser);
 	
 module.exports = router;
 

@@ -1,5 +1,6 @@
 const Supplier = require('../models/supplier.model');
 
+//insert supplier
 function insertSupplier(req, res) {
     const supplier = new Supplier({
         companyName: req.body.companyName,
@@ -13,6 +14,7 @@ function insertSupplier(req, res) {
         .catch(e => next(e));
 }
 
+//find suppliers
 function findSupplier(req, res) {
     Supplier.find().exec().then(suppliers => {
         res.json(suppliers);
@@ -22,6 +24,7 @@ function findSupplier(req, res) {
     });
 }
 
+//update supplier
 function updateSupplier(req, res) {
     const supplier = new Supplier(req.body);
     supplier.update().then(() => {
@@ -32,6 +35,7 @@ function updateSupplier(req, res) {
     });
 }
 
+//delete supplier
 function deleteSupplier(req, res) {
     Supplier.remove(req.params.id).then(() => {
         res.sendStatus(200);

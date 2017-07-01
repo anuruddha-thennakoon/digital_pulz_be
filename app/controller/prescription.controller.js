@@ -1,6 +1,7 @@
 const Prescription = require('../models/prescription.model');
 const Item = require('../models/item.model');
 
+//insert a prescription
 function insertPrescription(req, res){
     const prescription = new Prescription({
         patientName: req.body.patientName,
@@ -12,6 +13,7 @@ function insertPrescription(req, res){
         .catch(e => next(e));
 }
 
+//get all prescriptions
 function findPrescription(req, res){
     Prescription.find().exec().then(prescriptions => {
         res.json(prescriptions || {});
@@ -21,6 +23,7 @@ function findPrescription(req, res){
     });
 }
 
+//get status false prescription
 function findUnprescribedPrescription(req, res){
     Prescription.find({status : 'false'}).exec().then(prescriptions => {
         res.json(prescriptions || {});

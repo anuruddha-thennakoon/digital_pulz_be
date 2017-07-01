@@ -1,6 +1,7 @@
 const Item = require('../models/item.model');
 const PrescriptionModel = require('../models/prescription.model');
 
+//insert item
 function insertItem(req, res) {
     const item = new Item({
         prescriptionId: req.body.prescriptionId,
@@ -22,13 +23,25 @@ function insertItem(req, res) {
         .then(savedItem => res.json(savedItem))
         .catch(e => next(e));
 }
-    function findItem(req, res) {
-        Item.find().exec().then(item => {
-            res.json(item);
-        }).catch(err => {
-            console.error(err);
-            res.sendStatus(500);
-        });
-    }
 
-    module.exports = { insertItem, findItem }
+//find item
+function findItem(req, res) {
+    Item.find().exec().then(item => {
+        res.json(item);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+}
+
+function removeItem(req, res) {
+    Item.remove(req.params.id).then(() => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+}
+
+
+module.exports = { insertItem, findItem, removeItem }
