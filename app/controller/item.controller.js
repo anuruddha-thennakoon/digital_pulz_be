@@ -30,10 +30,6 @@ function findItem(req, res) {
     });
 }
 
-<<<<<<< HEAD
-module.exports = { insertItem, findItem }
-=======
-    
 
-    module.exports = { insertItem, findItem }
->>>>>>> 05564271af33361e58f1ab2930726f265e749c35
+module.exports = { insertItem, findItem }
+
