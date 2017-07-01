@@ -45,9 +45,22 @@ function findPreviousPrescription(req, res){
     });
 }
 
+//find pending prescriptions (to be dispensed)
+function findPendingPrescription(req, res){
+    Prescription.find({
+        status: "false"
+    }).populate('item').exec().then(prescriptions => {
+        res.json(prescriptions);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+}
 
 
 
 
 
-module.exports = {insertPrescription, findPrescription,findTodayPrescription,findPreviousPrescription}
+
+
+module.exports = {insertPrescription, findPrescription,findTodayPrescription,findPreviousPrescription,findPendingPrescription}
