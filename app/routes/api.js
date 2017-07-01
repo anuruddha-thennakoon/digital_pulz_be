@@ -10,6 +10,7 @@ router.use('/authenticate', authRoute);
 router.use('/users', userRoute);
 router.use('/prescription', presRoute);
 router.use('/item', itemRoute);
+router.use('/drugs', itemRoute);
 
 module.exports = router;
 

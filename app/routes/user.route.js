@@ -9,7 +9,6 @@ router.route('/')
     .get(user.findUser);
 
 router.route('/{:id}')
-    .post(user.insertUser)
 
     .get(user.findUser);
 	

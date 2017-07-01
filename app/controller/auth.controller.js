@@ -36,6 +36,7 @@ function login(req, res) {
                     userRole: user.userRole,
                     token: token
                 });
+                
             }
 
         }

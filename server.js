@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./app/config/config');
@@ -10,6 +11,8 @@ var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 //set up the express app
 const app = express();
+
+app.use(cors());
 
 //plugin bluebird promise in mongoose
 mongoose.Promise = global.Promise;
@@ -24,7 +27,7 @@ mongoose.connection.on('error', () => {
 
 app.use(bodyParser.json());
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
 
     console.log(req.url);
     if (req.url == '/api/authenticate') {
@@ -60,7 +63,7 @@ app.use(function (req, res, next) {
 
         }
     }
-});
+});*/
 
 //intialize route
 app.use('/api', route);

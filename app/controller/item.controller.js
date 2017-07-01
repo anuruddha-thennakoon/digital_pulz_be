@@ -21,13 +21,13 @@ function insertItem(req, res) {
         .then(savedItem => res.json(savedItem))
         .catch(e => next(e));
 }
-    function findItem(req, res) {
-        Item.find().exec().then(item => {
-            res.json(item);
-        }).catch(err => {
-            console.error(err);
-            res.sendStatus(500);
-        });
-    }
+function findItem(req, res) {
+    Item.find().exec().then(item => {
+        res.json(item);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+}
 
-    module.exports = { insertItem, findItem }
+module.exports = { insertItem, findItem }
