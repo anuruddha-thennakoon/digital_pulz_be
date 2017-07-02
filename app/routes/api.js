@@ -10,6 +10,7 @@ const stockRoute = require('./stock.route');
 const supplierRoute = require('./supplier.route');
 const drugRoute = require('./drug.route');
 const batchRoute = require('./batch.route');
+const orderRoute = require('./order.route');
 
 //your routers
 router.use('/authenticate', authRoute);
@@ -21,6 +22,6 @@ router.use('/stock',stockRoute);
 router.use('/upload',uploadRoute);
 router.use('/supplier', supplierRoute);
 router.use('/batch', batchRoute);
-
+router.use('/order', orderRoute);
 module.exports = router;
 
