@@ -4,6 +4,7 @@ const Item = require('../models/item.model');
 function insertPrescription(req, res) {
     const prescription = new Prescription({
         patientName: req.body.patientName,
+        doctorName: req.body.doctorName,
         prescribedDate: req.body.prescribedDate,
         status: false
     });
@@ -55,5 +56,15 @@ function findPendingPrescription(req, res) {
     });
 }
 
+function getPrescriptionItems(req, res) {
+    Prescription.findById(req.params.id).populate('item').exec().then(prescription => {
+        res.json(prescription || {});
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+}
 
-module.exports = { insertPrescription, findPrescription, findTodayPrescription, findPreviousPrescription, findPendingPrescription }
+module.exports = { insertPrescription, findPrescription, 
+                findTodayPrescription, findPreviousPrescription,
+                findPendingPrescription, getPrescriptionItems }

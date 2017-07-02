@@ -6,11 +6,14 @@ const router = express.Router();
 router.route('/')
     .post(supplier.insertSupplier)
 
-    .get(supplier.findSupplier);
+    .get(supplier.findSupplier)
+    
+router.route('/:id')
 
-router.route('/:id/')
     .put(supplier.updateSupplier)
 
-    .delete(supplier.deleteSupplier);
+    .delete(supplier.deleteSupplier)
+
+// router.param('id', supplier.load);
 
 module.exports = router;

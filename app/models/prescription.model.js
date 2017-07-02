@@ -6,6 +6,9 @@ const newPrescription = new Schema({
     patientName: {
         type: String
     },
+    doctorName: {
+        type: String
+    },
     prescribedDate: {
         type: String,
         default: Date.now
