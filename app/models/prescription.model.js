@@ -10,10 +10,13 @@ const newPrescription = new Schema({
          type: String, default: Date.now 
     },
     dispensedDate: {
-         type: String 
+         type: Date 
     },
     status: {
         type: String, default:"false"
+    },
+    doctorName :{
+        type: String
     },
     items:[{
         type: Schema.Types.ObjectId,

@@ -26,7 +26,7 @@ function insertStock(req, res){
 
 
      function findDanger(req, res) {
-        Stock.find({'quantity':{ $lt: 10 }}).exec().then(stock => {
+        Stock.find({'quantity':{ $lt: 15 }}).exec().then(stock => {
             res.json(stock);
         }).catch(err => {
             console.error(err);
@@ -34,14 +34,14 @@ function insertStock(req, res){
         });
     }
 
-        function findAvailability(req, res) {
-        Stock.find({'drugName':"pp" }).exec().then(stock => {
-            res.json(stock);    
-        }).catch(err => {
-            console.error(err);
-            res.sendStatus(500);
-        });
-    }
+    //     function findAvailability(req, res) {
+    //     Stock.find({'drugName':"pp" }).exec().then(stock => {
+    //         res.json(stock);    
+    //     }).catch(err => {
+    //         console.error(err);
+    //         res.sendStatus(500);
+    //     });
+    // }
 
 
     module.exports = { insertStock, findStock, findDanger }

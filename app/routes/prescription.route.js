@@ -20,7 +20,14 @@ router.route('/previous')
 router.route('/pending')
 
     .get(prescription.findPendingPrescription);
+
+     
+router.route('/dispensed')
+
+    .get(prescription.findDispensedPrescriptionItems);
     
+   
+
 
 module.exports = router;
 
