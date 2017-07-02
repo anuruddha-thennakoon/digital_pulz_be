@@ -40,6 +40,16 @@ function insertStock(req, res){
         });
     }
 
+
+    function findReorder(req, res) {
+        Stock.find({'quantity':{ $lt: 100 } && {$gte:50}}).exec().then(stock => {
+            res.json(stock);
+        }).catch(err => {
+            console.error(err);
+            res.sendStatus(500);
+        });
+    }
+
         function findAvailability(req, res) {
         Stock.find({'drugName':"pp" }).exec().then(stock => {
             res.json(stock);    
@@ -50,4 +60,4 @@ function insertStock(req, res){
     }
 
 
-    module.exports = { insertStock, findStock, findDanger }
+    module.exports = { insertStock, findStock, findDanger, findReorder }

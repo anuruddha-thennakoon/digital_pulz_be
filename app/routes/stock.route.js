@@ -11,7 +11,8 @@ router.route('/')
 router.route('/danger')
     .get(stock.findDanger);
 
-
+router.route('/reorder')
+    .get(stock.findReorder);
     
 
 module.exports = router;
