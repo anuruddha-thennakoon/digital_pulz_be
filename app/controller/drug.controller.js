@@ -12,7 +12,7 @@ function insertDrug(req, res) {
         reorderLevel: req.body.reorderLevel,
         dosage: req.body.dosage,
         frequency: req.body.frequency,
-        
+       
     });
 
     drug.save()
