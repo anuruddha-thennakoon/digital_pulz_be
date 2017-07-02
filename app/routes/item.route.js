@@ -4,12 +4,13 @@ const router = express.Router();
 
 
 router.route('/')
-    .post(item.insertItem)
 
 	.get(item.findItem);
 
-router.route('/{:id}')
-    .delete(item.removeItem);
+router.route('/:id')
+    .delete(item.removeItem)
+
+    .post(item.insertItem)
     
 module.exports = router;
 

@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 
 const newStock = new Schema({
     drugName: {
-        type: String,
-       
+        type: String
     },
-    unitType: {
+    drugType: {
         type: String
     },
     drugCategory:{
@@ -18,6 +17,21 @@ const newStock = new Schema({
     },
     quantity: {
         type: Number
+    },
+    remarks :{
+        type :String
+    },
+     dangerLevel :{
+        type :Number
+    },
+    reorderLevel :{
+        type :Number
+    },
+    dosage :{
+        type :Number
+    },
+    frequency :{
+        type :String
     }
 });
 

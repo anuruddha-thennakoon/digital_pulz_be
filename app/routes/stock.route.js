@@ -4,14 +4,15 @@ const router = express.Router();
 
 
 router.route('/')
-    .post(stock.insertStock)
+   
 
 	.get(stock.findStock)
 
 router.route('/danger')
     .get(stock.findDanger);
 
-
+router.route('/reorder')
+    .get(stock.findReorder);
     
 
 module.exports = router;
