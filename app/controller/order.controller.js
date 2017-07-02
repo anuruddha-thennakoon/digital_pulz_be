@@ -1,8 +1,10 @@
 const Order = require('../models/order.model');
+const Supplier=require('../models/supplier.model');
+
 
 function insertOrder(req, res){
     const order = new Order({
-        senderEmail: req.body.senderEmail,
+        
         receiverEmail: req.body.receiverEmail,
         supplierName : req.body.supplierName,
         drugName:req.body.drugName,
@@ -28,6 +30,10 @@ function findOrder(req, res) {
             res.sendStatus(500);
         });
     }
+
+
+
+
 
      module.exports = { insertOrder, findOrder}
 

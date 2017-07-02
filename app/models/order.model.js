@@ -3,10 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const newOrder = new Schema({
-    senderEmail: {
-        type: String,
-       
-    },
+  
     receiverEmail: {
         type: String
     },
