@@ -24,7 +24,7 @@ function findPrescription(req, res) {
 //prescriptions issued today
 function findTodayPrescription(req, res) {
     Prescription.find({
-        prescribedDate: { '$gte': '2017-07-01T08:24:59.365Z' }
+        dispensedDate: { '$gte': '2017-07-02T08:24:59.365Z' }
     }).populate('item').exec().then(prescriptions => {
         res.json(prescriptions);
     }).catch(err => {
@@ -36,7 +36,7 @@ function findTodayPrescription(req, res) {
 //find previous prescriptions
 function findPreviousPrescription(req, res) {
     Prescription.find({
-        prescribedDate: { '$lt': '2017-07-02T08:24:59.365Z' }
+        dispensedDate: { '$lt': '2017-07-02T08:24:59.365Z' }
     }).populate('item').exec().then(prescriptions => {
         res.json(prescriptions);
     }).catch(err => {
@@ -47,8 +47,21 @@ function findPreviousPrescription(req, res) {
 
 //find pending prescriptions (to be dispensed)
 function findPendingPrescription(req, res) {
-    Prescription.find({ status: 'false' }).exec().then(prescriptions => {
-        res.json(prescriptions || {});
+    Prescription.find({
+        status: "false"
+    }).populate('item').exec().then(prescriptions => {
+        res.json(prescriptions);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+}
+
+function findDispensedPrescriptionItems(req, res) {
+    Prescription.find({
+        status: "true"
+    }).populate('item').exec().then(prescriptions => {
+        res.json(prescriptions);
     }).catch(err => {
         console.error(err);
         res.sendStatus(500);
@@ -56,4 +69,18 @@ function findPendingPrescription(req, res) {
 }
 
 
-module.exports = { insertPrescription, findPrescription, findTodayPrescription, findPreviousPrescription, findPendingPrescription }
+
+module.exports = { insertPrescription, findPrescription, findTodayPrescription,
+     findPreviousPrescription, findPendingPrescription,findDispensedPrescriptionItems }
+
+
+//  function updatePrescriptionStatus(value, callback){
+//      console.log("updating prescription");
+//      Prescription.findById(value).exec().then(prescriptions => {
+//         res.json(prescriptions);
+//     }).catch(err => {
+//         console.error(err);
+//         res.sendStatus(500);
+//     });
+
+//  }

@@ -7,12 +7,16 @@ const newPrescription = new Schema({
         type: String
     },
     prescribedDate: {
-        type: String,
-        default: Date.now
+         type: String, default: Date.now 
+    },
+    dispensedDate: {
+         type: Date 
     },
     status: {
-        type: String,
-        default: "false"
+        type: String, default:"false"
+    },
+    doctorName :{
+        type: String
     },
     items:[{
         type: Schema.Types.ObjectId,

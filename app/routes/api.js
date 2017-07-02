@@ -7,11 +7,17 @@ const presRoute = require('./prescription.route');
 const itemRoute = require('./item.route');
 const stockRoute = require('./stock.route');
 const supplierRoute = require('./supplier.route');
+<<<<<<< HEAD
+const drugRoute = require('./drug.route');
+const batchRoute = require('./batch.route');
+const orderRoute = require('./order.route');
+=======
 
  const orderRoute=require('./order.route');
 
 
  const drugRoute = require('./drug.route');
+>>>>>>> 21f873347be87bb2a509be7ad90a0db0ad39bd72
 
 //your routers
 router.use('/authenticate', authRoute);
@@ -21,7 +27,12 @@ router.use('/item', itemRoute);
 router.use('/drugs', drugRoute);
 router.use('/stock',stockRoute);
 router.use('/supplier', supplierRoute);
+<<<<<<< HEAD
+router.use('/batch', batchRoute);
+router.use('/order', orderRoute);
+=======
 router.use('/order',orderRoute);
 
+>>>>>>> 21f873347be87bb2a509be7ad90a0db0ad39bd72
 module.exports = router;
 
